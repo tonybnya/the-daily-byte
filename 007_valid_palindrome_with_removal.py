@@ -1,4 +1,6 @@
 """
+Valid Palindrome with Removal
+
 This question is asked by Facebook.
 Given a string and the ability to delete at most one character,
 return whether or not it can form a palindrome.
