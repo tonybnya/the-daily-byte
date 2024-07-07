@@ -19,9 +19,13 @@ from typing import Callable, List
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n)
+# Memory Space: O(1)
 def correct_capitalization(s: str) -> bool:
     """Check correct capitalization."""
+    # should be all time the same - SC: O(1)
     range_lower: List = list(range(97, 123))
+    # should be all time the same - SC: O(1)
     range_upper: List = list(range(65, 91))
 
     first_letter: str = s[0]
@@ -46,6 +50,20 @@ def correct_capitalization(s: str) -> bool:
     return True
 
 
+# Runtime: O(n)
+# Memory Space: O(1)
+def optimal(s: str) -> bool:
+    """Check correct capitalization."""
+    n: int = len(s)
+    counter: int = 0
+
+    for c in s:
+        if c.isupper():
+            counter += 1
+
+    return counter == 0 or counter == n or (counter == 1 and s[0].isupper())
+
+
 def tester(func: Callable[[str], bool], s: str, expected: bool) -> None:
     """Print custom output for testing."""
     if func(s) == expected:
@@ -64,6 +82,6 @@ if __name__ == "__main__":
 
         print(f'Input: s = "{s}"')
         print(f"Expected Output: {expected}")
-        print(f"My Answer: {correct_capitalization(s)}")
-        tester(correct_capitalization, s, expected)
+        print(f"My Answer: {optimal(s)}")
+        tester(optimal, s, expected)
         print()
