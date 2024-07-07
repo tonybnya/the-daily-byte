@@ -18,20 +18,25 @@ from typing import Callable, Dict, List
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n)
+# Memory Space: O(n)
 def vacuum_cleaner_route(s: str) -> bool:
     """Check vacuum cleaner route."""
-    hm: Dict = {}
+    hm: Dict = {}  # should end up with an extra memory space of O(n)
 
     if not s or len(s) < 2:
         return False
 
+    # TC: O(n)
     for c in s:
         hm[c] = hm.get(c, 0) + 1
 
+    # SC: O(n)
     keys: List = list(hm.keys())
     if len(keys) < 2:
         return False
 
+    # SC: O(n)
     values: List = list(hm.values())
     val: int = values[0]
 
@@ -40,6 +45,26 @@ def vacuum_cleaner_route(s: str) -> bool:
             return False
 
     return True
+
+
+# Runtime: O(n)
+# Memory Space: O(1)
+def optimal(s: str) -> bool:
+    """Check vacuum cleaner route."""
+    ld: int = 0
+    ud: int = 0
+
+    for c in s:
+        if c == "L":
+            ld += 1
+        elif c == "R":
+            ld -= 1
+        elif c == "U":
+            ud += 1
+        elif c == "D":
+            ud -= 1
+
+    return ld == 0 and ud == 0
 
 
 def tester(func: Callable[[str], bool], s: str, expected: bool) -> None:
@@ -60,6 +85,6 @@ if __name__ == "__main__":
 
         print(f'Input: s = "{s}"')
         print(f"Expected Output: {expected}")
-        print(f"My Answer: {vacuum_cleaner_route(s)}")
-        tester(vacuum_cleaner_route, s, expected)
+        print(f"My Answer: {optimal(s)}")
+        tester(optimal, s, expected)
         print()
