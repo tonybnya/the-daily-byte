@@ -16,16 +16,39 @@ from typing import Callable
 from printer import print_fail, print_pass
 
 
-def reverse_string(s: str) -> str:
+# Runtime: O(n^2)
+# Memory Space: O(n^2)
+def solution1(s: str) -> str:
     """Reverse a string."""
     n: int = len(s)
     rs: str = ""
 
     for i in range(n - 1, -1, -1):
-        rs += [c for c in s][i]
+        rs += s[i]
 
     return rs
-    # return s[::-1]
+
+
+# Runtime: O(n)
+# Memory Space: O(n)
+def solution2(s: str) -> str:
+    """Reverse a string."""
+    return s[::-1]
+
+
+# Runtime: O(n)
+# Memory Space: O(n)
+def optimal(s: str) -> str:
+    """Reverse a string."""
+    n: int = len(s)
+    rs: str = [""] * n
+    j: int = 0
+
+    for i in range(n - 1, -1, -1):
+        rs[j] = s[i]
+        j += 1
+
+    return "".join(rs)
 
 
 def tester(func: Callable[[str], str], s: str, expected: str) -> None:
@@ -44,6 +67,6 @@ if __name__ == "__main__":
         s, expected = line.strip().split(",")
         print(f'Input: s = "{s}"')
         print(f'Expected Output = "{expected}"')
-        print(f'My Answer: "{reverse_string(s)}"')
-        tester(reverse_string, s, expected)
+        print(f'My Answer: "{optimal(s)}"')
+        tester(optimal, s, expected)
         print()
