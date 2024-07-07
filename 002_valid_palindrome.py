@@ -19,12 +19,14 @@ from typing import Callable, List
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n)
+# Memory Space: O(n)
 def cleanup(s: str) -> str:
     """Cleanup a string."""
     rng1: List = list(range(65, 91))
     rng2: List = list(range(97, 123))
 
-    chars = ""
+    chars = ""  # should end up with an O(n) extra memory space
     for c in s.lower():
         if ord(c) in rng1 or ord(c) in rng2:
             chars += c
@@ -32,9 +34,11 @@ def cleanup(s: str) -> str:
     return chars
 
 
+# Runtime: O(n)
+# Memory Space: O(n)
 def valid_palindrome(s: str) -> bool:
     """Valid a palindrome."""
-    s = cleanup(s)
+    s = cleanup(s)  # memory space: O(n)
     i: int = 0
     j: int = len(s) - 1
 
@@ -44,6 +48,28 @@ def valid_palindrome(s: str) -> bool:
             j -= 1
         else:
             return False
+    return True
+
+
+# Runtime: O(n)
+# Memory Space: O(1)
+def optimal(s: str) -> bool:
+    """Valid a palindrome."""
+    n: int = len(s)
+    i: int = 0
+    j: int = n - 1
+
+    while i < j:
+        if not s[i].isalpha():
+            i += 1
+        elif not s[j].isalpha():
+            j -= 1
+        elif s[i].lower() != s[j].lower():
+            return False
+        else:
+            i += 1
+            j -= 1
+
     return True
 
 
@@ -65,6 +91,6 @@ if __name__ == "__main__":
 
         print(f'Input: s = "{s}"')
         print(f"Expected Output: {expected}")
-        print(f"My Answer: {valid_palindrome(s)}")
-        tester(valid_palindrome, s, expected)
+        print(f"My Answer: {optimal(s)}")
+        tester(optimal, s, expected)
         print()
