@@ -17,6 +17,8 @@ from typing import Callable, Dict, List
 from printer import print_fail, print_pass
 
 
+# Runtime: O(m+n)
+# Memory Space: O(m+n)
 def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
     """Return the intersection of the two lists."""
     hmap: Dict = {}
