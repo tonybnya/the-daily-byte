@@ -18,6 +18,8 @@ from typing import Callable
 from printer import print_fail, print_pass
 
 
+# Runtime: O(logn) -> `bin()` is O(logn) TC, `int()` is O(1) TC
+# Memory Space: O(1)
 def add_binary(bin1: str, bin2: str) -> str:
     """Add two binary strings."""
     return bin(int(bin1, 2) + int(bin2, 2))[2:]

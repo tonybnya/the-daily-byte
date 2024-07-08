@@ -19,9 +19,11 @@ from typing import Callable, List
 from printer import print_fail, print_pass
 
 
+# Runtime: O(nlogn)
+# Memory Space: O(n)
 def longest_common_prefix(strs: List[str]) -> str:
     """Return the longest common prefix."""
-    strs = sorted(strs)
+    strs = sorted(strs)  # O(nlogn) TC + O(n) SC
 
     first_str: str = strs[0]
     last_str: str = strs[-1]
