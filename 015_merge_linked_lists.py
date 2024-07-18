@@ -26,26 +26,21 @@ def merge_linked_lists(l1: ListNode, l2: ListNode) -> ListNode:
     dummy: ListNode = ListNode()
     head: ListNode() = dummy
 
-    node1: ListNode | None = l1.head
-    node2: ListNode | None = l2.head
-
-    while node1 and node2:
-        if node1.val < node2.val:
-            head.nextnode = node1
-            node1 = node1.nextnode
+    while l1 and l2:
+        if l1.val < l2.val:
+            head.nextnode = l1
+            l1 = l1.nextnode
         else:
-            head.nextnode = node2
-            node2 = node2.nextnode
+            head.nextnode = l2
+            l2 = l2.nextnode
         head = head.nextnode
 
-        if node1:
-            head.nextnode = node1
-        else:
-            head.nextnode = node2
+    if l1:
+        head.nextnode = l1
+    elif l2:
+        head.nextnode = l2
 
-        merged: SLL = SLL()
-        merged.head = dummy.nextnode
-        return merged
+    return dummy.nextnode
 
 
 if __name__ == "__main__":
@@ -74,9 +69,5 @@ if __name__ == "__main__":
 
         merged: SLL = merge_linked_lists(l1, l2)
         merged.print_sll()
-
-        # l1.print_sll()
-        # l2.print_sll()
-        # expected_ll.print_sll()
 
         print()
