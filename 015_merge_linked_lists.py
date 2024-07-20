@@ -18,27 +18,28 @@ list1 = 4->4->7, list2 = 1->5->6->null, return 1->4->4->5->6->7->null
 
 from __future__ import annotations
 
-from singly_linked_list import ListNode, SLL
+from singly_linked_list import SLL, ListNode
 
 
 def merge_linked_lists(l1: ListNode, l2: ListNode) -> ListNode:
     """Merge two Linked Lists."""
-    dummy: ListNode = ListNode()
-    head: ListNode() = dummy
+    dummy: ListNode | None = ListNode()
+    curr: ListNode | None = dummy
 
     while l1 and l2:
         if l1.val < l2.val:
-            head.nextnode = l1
+            curr.nextnode = l1
             l1 = l1.nextnode
         else:
-            head.nextnode = l2
+            curr.nextnode = l2
             l2 = l2.nextnode
-        head = head.nextnode
+
+        curr = curr.nextnode
 
     if l1:
-        head.nextnode = l1
+        curr.nextnode = l1
     elif l2:
-        head.nextnode = l2
+        curr.nextnode = l2
 
     return dummy.nextnode
 
