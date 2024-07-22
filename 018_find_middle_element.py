@@ -17,6 +17,8 @@ from __future__ import annotations
 from singly_linked_list import ListNode
 
 
+# Runtime: O(n)
+# Extra Memory Space: O(1)
 def find_middle_node(head: ListNode | None) -> ListNode | None:
     """Find the middle node."""
     if head is None:
