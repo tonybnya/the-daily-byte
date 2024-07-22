@@ -21,17 +21,21 @@ from typing import Callable, Dict
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n + m)
+# Extra Memory Space: O(n + m)
 def spot_the_diff(s: str, t: str) -> str:
     """Return the only different letter."""
-    hmap: Dict = {}
+    hmap: Dict = {}  # O(n + m) SC
 
+    # O(n) TC
     for c in s:
         hmap[c] = hmap.get(c, 0) + 1
 
+    # O(m) TC
     for c in t:
         hmap[c] = hmap.get(c, 0) + 1
 
-    return c if hmap.get(c) == 1 else " "
+    return c if hmap.get(c, "") == 1 else " "
 
 
 def tester(func: Callable[[str, str], str], s: str, t: str, expected: str) -> None:
