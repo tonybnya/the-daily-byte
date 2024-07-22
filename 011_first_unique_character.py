@@ -12,18 +12,22 @@ Ex: Given the following strings...
 "developer", return 0
 """
 
-from printer import print_fail, print_pass
-
 from typing import Callable, Dict
 
+from printer import print_fail, print_pass
 
+
+# Runtime: O(n)
+# Extra Memory Space: O(n)
 def first_unique_character(s: str) -> int:
     """Return the index of the first unique character."""
-    hmap: Dict = {}
+    hmap: Dict = {}  # O(n) SC
 
+    # O(n) TC
     for c in s:
         hmap[c] = hmap.get(c, 0) + 1
 
+    # O(n) TC
     for i, c in enumerate(s):
         if hmap[c] == 1:
             return i
