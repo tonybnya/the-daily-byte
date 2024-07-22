@@ -36,10 +36,7 @@ def merge_linked_lists(l1: ListNode, l2: ListNode) -> ListNode:
 
         curr = curr.nextnode
 
-    if l1:
-        curr.nextnode = l1
-    elif l2:
-        curr.nextnode = l2
+    curr.nextnode = l1 if l1 else l2
 
     return dummy.nextnode
 
