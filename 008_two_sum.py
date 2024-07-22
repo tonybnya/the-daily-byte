@@ -17,9 +17,11 @@ from typing import Callable, Dict, List
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n)
+# Extra Memory Space: O(n)
 def two_sum(nums: List[int], k: int) -> List[int]:
     """Return a list of the two numbers of nums sum to k, or [-1, -1]."""
-    hmap: Dict = {}
+    hmap: Dict = {}  # O(n) SC
 
     i: int = 0
     while i < len(nums):
