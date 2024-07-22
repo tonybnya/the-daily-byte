@@ -17,13 +17,17 @@ from typing import Callable
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n + m)
+# Extra Memory Space: O(n + m)
 def valid_anagram(s: str, t: str) -> bool:
     """Validate anagram."""
-    hmaps, hmapt = {}, {}
+    hmaps, hmapt = {}, {}  # O(n + m) extra memory space
 
+    # O(n) runtime
     for c in s:
         hmaps[c] = hmaps.get(c, 0) + 1
 
+    # O(m) runtime
     for c in t:
         hmapt[c] = hmapt.get(c, 0) + 1
 
