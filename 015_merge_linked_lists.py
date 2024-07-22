@@ -21,6 +21,8 @@ from __future__ import annotations
 from singly_linked_list import SLL, ListNode
 
 
+# Runtime: O(m+n)
+# Extra Memory Space: O(1)
 def merge_linked_lists(l1: ListNode, l2: ListNode) -> ListNode:
     """Merge two Linked Lists."""
     dummy: ListNode | None = ListNode()
