@@ -17,14 +17,18 @@ from typing import Callable, Dict
 from printer import print_fail, print_pass
 
 
+# Runtime: O(n)
+# Extra Memory Space: O(n + m)
 def jewels_and_stones(jewels: str, stones: str) -> int:
     """Return the number of stones that are also jewels."""
-    hmap: Dict = {}
+    hmap: Dict = {}  # O(n) SC -> n is the length of jewels
     k: int = 0
 
+    # O(n) runtime
     for c in jewels:
         hmap[c] = hmap.get(c, 0) + 1
 
+    # O(m) runtime
     for c in stones:
         if c in hmap:
             k += 1
