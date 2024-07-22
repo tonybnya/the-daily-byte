@@ -23,7 +23,7 @@ from printer import print_fail, print_pass
 # Memory Space: O(m+n)
 def uncommon_words(sentence1: str, sentence2: str) -> List[str]:
     """Return a list of uncommon words."""
-    hmap: Dict = {}  # SC: O(n)
+    hmap: Dict = {}  # SC: O(m+n)
     lst: List[str] = []  # assuming this is a dynamic array, so SC is O(m+n)
 
     for chars in sentence1.split():
@@ -33,10 +33,13 @@ def uncommon_words(sentence1: str, sentence2: str) -> List[str]:
         hmap[chars] = hmap.get(chars, 0) + 1
 
     keys: List[str] = list(hmap.keys())
-    for i in range(len(keys)):
-        key: str = keys[i]
+    for _, key in enumerate(keys):
         if hmap[key] == 1:
             lst.append(key)
+    # for i in range(len(keys)):
+    #     key: str = keys[i]
+    #     if hmap[key] == 1:
+    #         lst.append(key)
 
     return lst
 
