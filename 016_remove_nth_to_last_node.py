@@ -1,4 +1,6 @@
 """
+Remove Nth to Last Node
+
 This question is asked by Facebook.
 Given a linked list and a value n, remove the nth to last node
 and return the resulting list.
@@ -15,6 +17,8 @@ from __future__ import annotations
 from singly_linked_list import ListNode
 
 
+# Runtime: O(n)
+# Extra Memory Space: O(1)
 def remove_nth_to_last_node(lst: ListNode, n: int) -> ListNode:
     """Remove nth to last node."""
     dummy: ListNode = ListNode()
