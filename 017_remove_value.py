@@ -17,6 +17,8 @@ from __future__ import annotations
 from singly_linked_list import ListNode
 
 
+# Runtime: O(n)
+# Extra Memory Space: O(1)
 def remove_value(head: ListNode | None, val: int) -> ListNode | None:
     """Remove all nodes containing the value `val`."""
     if head is None:
