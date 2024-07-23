@@ -20,6 +20,8 @@ from __future__ import annotations
 from singly_linked_list import ListNode
 
 
+# Runtime: O(n)
+# Extra Memory Space: O(1)
 def has_cycle(head: ListNode | None) -> bool:
     """Return weither a Linked List has a cycle or not."""
     if head is None:
