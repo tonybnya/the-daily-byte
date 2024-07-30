@@ -26,14 +26,18 @@ def linked_list_cycle(head: ListNode | None) -> ListNode | None:
     slow: ListNode | None = head
     fast: ListNode | None = head
 
-    while fast.nextnode and fast.nextnode.nextnode:
+    while fast is not None and fast.nextnode is not None:
+        slow = slow.nextnode
+        fast = fast.nextnode.nextnode
+        if slow == fast:
+            break
+
+    if fast is None or fast.nextnode is None:
+        return None
+
+    slow = head
+    while slow != fast:
+        slow = slow.nextnode
         fast = fast.nextnode
 
-    value: int = fast.nextnode.val
-
-    while slow:
-        if slow.val == value:
-            return slow
-        slow = slow.nextnode
-
-    return None
+    return slow
